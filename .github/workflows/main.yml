@@ -28,7 +28,7 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "zeroXone-github"
           repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fifteen
-          repo sync
+          repo sync -j5
           git add .
           git commit -m "Gething repository, rsync and upload it"
           git push origin main
