@@ -21,10 +21,11 @@ jobs:
       - name: Install prerequisites
         run: |
           sudo apt-get update
-          sudo apt-get install -y git rsync repo
+          sudo apt-get install -y git rsync repo neofetch
 
       - name: Rsync and Upload intro repository 
         run: |
+          neofetch
           git config --global user.email "you@example.com"
           git config --global user.name "zeroXone-github"
           repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fifteen
