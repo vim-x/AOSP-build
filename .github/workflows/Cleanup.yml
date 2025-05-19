@@ -1,0 +1,27 @@
+name: Delete Files
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Delete Files:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    strategy:
+      max-parallel: 4
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          fetch-depth: 0
+
+      - name: Deleting Files
+        run: |
+         rm -rf manifest
+         git add .
+         git commit -m "-1"
+         git push origin
+        
