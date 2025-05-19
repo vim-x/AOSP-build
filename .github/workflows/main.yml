@@ -21,8 +21,7 @@ jobs:
       - name: Install prerequisites
         run: |
           sudo apt-get update
-          sudo apt-get install -y git rsync repo neofetch gpg
-          sudo apt-get upgrade
+          sudo apt-get install -y git gpg repo
       - name: Rsync and Upload intro repository 
         run: |
           neofetch
