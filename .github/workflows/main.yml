@@ -5,7 +5,7 @@ on:
 
 jobs:
   AospRsync:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     strategy:
