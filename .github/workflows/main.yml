@@ -21,7 +21,7 @@ jobs:
       - name: Install prerequisites
         run: |
           sudo apt-get update
-          sudo apt-get install -y git rsync
+          sudo apt-get install -y git rsync repo
 
       - name: Rsync and Upload intro repository 
         run: |
