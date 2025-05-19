@@ -1,0 +1,33 @@
+name: Fork Repository and Rsync
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-kernel:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    strategy:
+      max-parallel: 4
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Install prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git rsync
+
+      - name: Rsync and Upload intro repository 
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "zeroXone-github"
+          git clone -b fifteen https://github.com/PixelOS-AOSP/manifest
+          git add .
+          git commit -m "Gething repository, rsync and upload it"
+          git push origin main
