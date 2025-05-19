@@ -27,7 +27,7 @@ jobs:
         run: |
           git config --global user.email "you@example.com"
           git config --global user.name "zeroXone-github"
-          git clone -b fifteen https://github.com/PixelOS-AOSP/manifest
+          git rm --cached manifest
           git add .
           git commit -m "Gething repository, rsync and upload it"
           git push origin main
