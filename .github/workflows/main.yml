@@ -21,7 +21,7 @@ jobs:
       - name: Install prerequisites
         run: |
           sudo apt-get update
-          sudo apt-get install -y git rsync repo neofetch
+          sudo apt-get install -y git rsync repo neofetch gpg
 
       - name: Rsync and Upload intro repository 
         run: |
@@ -29,8 +29,7 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "zeroXone-github"
           repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fifteen
-          cp /home/runner/work/AOSP-build/AOSP-build/.repo/repo/repo /usr/bin/repo
-          repo sync -j5
+          repo sync
           git add .
           git commit -m "Gething repository, rsync and upload it"
           git push origin main
