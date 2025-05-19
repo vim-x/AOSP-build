@@ -29,7 +29,7 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "zeroXone-github"
           rm -rf ~/.repoconfig
-          cp AOSP-build/AOSP-build/.repo/repo/repo /usr/bin/repo
+          cp ~/AOSP-build/AOSP-build/.repo/repo/repo /usr/bin/repo
           repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fifteen
           repo sync
           git add .
