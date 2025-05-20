@@ -28,6 +28,7 @@ jobs:
           git config --global user.name "zeroXone-github"
           chmod +x ./get_crave.sh
           bash get_crave.sh
+          crave -h
           mkdir project
           cd project
           git add .
