@@ -35,7 +35,12 @@ jobs:
           sudo ln -sf /home/${USER}/bin/crave /usr/bin/crave
           envsubst < ${PWD}/crave.conf.sample >> ${PWD}/crave.conf
           rm -rf ${PWD}/crave.conf.sample
-          
+          fi
+        env:
+          CRAVE_USERNAME: ${{  secrets.CRAVE_USERNAME  }}
+          CRAVE_TOKEN: ${{  secrets.CRAVE_TOKEN  }}
+
+        
       - name: Rsync and Upload intro repository 
         run: |
           git config --global user.email "you@example.com"
