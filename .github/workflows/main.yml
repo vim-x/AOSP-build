@@ -26,10 +26,10 @@ jobs:
         run: |
           git config --global user.email "you@example.com"
           git config --global user.name "zeroXone-github"
-          repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fifteen
+          chmod +x ./get_crave.sh
+          bash get_crave.sh
           mkdir project
           cd project
-          repo sync
           git add .
           git commit -m "Gething repository, rsync and upload it"
           git push origin main
