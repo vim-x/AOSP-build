@@ -22,24 +22,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y git gpg rsync repo
-
-
-      - name: Configure the 'crave' environment
-        run: |
-         if [[ "${DCDEVSPACE}" == "1" ]]; then
-         echo 'No need to set up crave, we are already running in devspace!'
-         else
-         mkdir ${HOME}/bin/
-         curl -s https://raw.githubusercontent.com/accupara/crave/master/get_crave.sh | bash -s --
-          mv ${PWD}/crave ${HOME}/bin/
-          sudo ln -sf /home/${USER}/bin/crave /usr/bin/crave
-          envsubst < ${PWD}/crave.conf.sample >> ${PWD}/crave.conf
-          rm -rf ${PWD}/crave.conf.sample
-          fi
-        env:
-          CRAVE_USERNAME: ${{  secrets.CRAVE_USERNAME  }}
-          CRAVE_TOKEN: ${{  secrets.CRAVE_TOKEN  }}
-
         
       - name: Rsync and Upload intro repository 
         run: |
@@ -47,7 +29,8 @@ jobs:
           git config --global user.name "zeroXone-github"
           mkdir project
           cd project
-          crave -h
+          repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fifteen
+          repo sync
           git add .
           git commit -m "Gething repository, rsync and upload it"
           git push origin main
